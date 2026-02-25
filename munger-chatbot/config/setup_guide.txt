@@ -1,0 +1,165 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MUNGER AI CHATBOT — SETUP GUIDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Three workflows. One bot. Total setup time: ~1-2 hours.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART 1: ACCOUNTS & API KEYS YOU NEED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Required:
+  [1] Telegram Bot Token
+      → Talk to @BotFather on Telegram
+      → /newbot → follow prompts → save the token
+      → Also message @userinfobot to get YOUR chat ID for proactive outreach
+
+  [2] Anthropic API Key (for Claude claude-opus-4-6)
+      → https://console.anthropic.com
+      → Create API key → save it
+
+  [3] OpenAI API Key (for text-embedding-3-large)
+      → https://platform.openai.com/api-keys
+      → Create key → save it
+      → NOTE: Only used for embeddings (~$0.0001/chunk, very cheap)
+
+  [4] Qdrant (vector database)
+      → Option A — Free cloud: https://cloud.qdrant.io (1GB free)
+        Create account → Create cluster → get URL + API key
+      → Option B — Self-hosted: docker run -p 6333:6333 qdrant/qdrant
+        URL: http://localhost:6333, no API key needed
+
+  [5] SerpAPI Key (for web research)
+      → https://serpapi.com (100 free searches/month)
+      → OR substitute: use the Tavily node if you prefer
+        (https://tavily.com — also has free tier)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART 2: N8N SETUP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Running n8n:
+  → n8n cloud: https://n8n.io (easiest, $20/month)
+  → Self-hosted via Docker (free):
+    docker run -it --rm \
+      --name n8n \
+      -p 5678:5678 \
+      -v ~/.n8n:/home/node/.n8n \
+      n8nio/n8n
+
+  → Access at: http://localhost:5678
+
+Create credentials in n8n (Settings → Credentials → New):
+  - Telegram API: paste your bot token
+  - Anthropic API: paste your API key
+  - OpenAI API: paste your API key
+  - Qdrant: paste URL and API key (or just URL if self-hosted)
+  - SerpAPI: paste your API key
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART 3: IMPORT WORKFLOWS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+In n8n: Workflows → Import → paste/upload each JSON file:
+  1. workflows/01_chat_handler.json
+  2. workflows/02_kb_ingestion.json
+  3. workflows/03_proactive_outreach.json
+
+After importing each workflow:
+  → Replace all REPLACE_WITH_*_CREDENTIAL_ID placeholders with your
+    actual credential IDs (found in Settings → Credentials)
+  → Paste the full contents of config/system_prompt.txt into the
+    "System Message" field of the Munger AI Agent node in workflows 1 and 3
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART 4: BUILD THE KNOWLEDGE BASE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Create Qdrant collection
+  → Either let the workflow create it automatically on first run,
+    OR create it manually:
+    curl -X PUT http://YOUR_QDRANT_URL/collections/munger_knowledge \
+      -H 'Content-Type: application/json' \
+      -d '{"vectors": {"size": 3072, "distance": "Cosine"}}'
+  → Size 3072 is for text-embedding-3-large. Use 1536 for text-embedding-3-small.
+
+Step 2: Prepare documents
+  → Download Munger's speeches (see knowledge_sources.txt for what to get)
+  → Run: python3 scripts/prepare_documents.py
+    to auto-download freely available speeches
+  → For Poor Charlie's Almanack and Wesco letters: acquire and convert to .txt
+    Place in scripts/documents/ folder
+
+Step 3: Update workflow 02 with your document URLs/content
+  → Open "Define Source Documents" node in workflow 02
+  → Update the URLs array to point to your actual files
+  → OR host your .txt files somewhere accessible (GitHub raw, S3, etc.)
+
+Step 4: Run workflow 02 manually
+  → Click "Execute" in n8n
+  → Watch it ingest each document
+  → Should complete in 5-15 minutes depending on corpus size
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART 5: ACTIVATE THE BOT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  → In workflow 01 (Chat Handler): click "Activate" toggle (top right)
+  → In workflow 03 (Proactive Outreach):
+    → Set REPLACE_WITH_YOUR_TELEGRAM_CHAT_ID to your actual chat ID
+    → Click "Activate"
+
+  → Open Telegram → find your bot → send it a message
+  → You should get a response within 10-15 seconds
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART 6: OPTIONAL ENHANCEMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Voice notes (receive audio, transcribe, respond as text):
+  → Add Whisper API node before the AI Agent in workflow 01
+  → Handle message.voice objects from Telegram trigger
+  → Transcribe audio → pass text to agent
+
+Multiple users:
+  → The session memory is already scoped per chat_id so multiple
+    users get independent conversation histories automatically
+
+WhatsApp (instead of Telegram):
+  → Replace Telegram Trigger/Send with WhatsApp via Twilio
+  → Requires Twilio account + WhatsApp Business API approval
+  → n8n has Twilio nodes. The rest of the workflow stays identical.
+
+Better news sources (for workflow 03):
+  → Subscribe to WSJ/Bloomberg for their RSS feeds
+  → Add more specialized feeds: ValueInvestorsClub, Graham & Doddsville
+  → Consider NewsAPI.org for keyword-filtered news (free tier available)
+
+Persistent memory across sessions (optional upgrade):
+  → Replace "Conversation Memory" (Window Buffer) with Redis Chat Memory
+  → Requires a Redis instance (Redis Cloud free tier works)
+  → Stores unlimited history rather than just the last 20 messages
+
+Cost control:
+  → claude-opus-4-6 is expensive (~$15/million output tokens)
+  → For lower cost: switch to claude-haiku-4-5 (~$1.25/million tokens)
+    (less eloquent but still follows the system prompt well)
+  → Embeddings via text-embedding-3-small instead of large: $0.02/million
+    vs $0.13/million — minimal quality difference for this use case
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ESTIMATED MONTHLY COSTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Light use (~50 messages/month, 2 proactive/week):
+  → Anthropic (Claude claude-opus-4-6): ~$3-8
+  → OpenAI embeddings: ~$0.01
+  → Qdrant cloud free tier: $0
+  → SerpAPI free tier (100/month): $0
+  → n8n self-hosted: $0 (or $20 for cloud)
+  → Total: ~$3-28/month depending on n8n hosting
+
+Heavy use (~500 messages/month):
+  → Anthropic: ~$30-60
+  → Everything else: minimal
+  → Consider claude-sonnet-4-6 as a cost-performance compromise

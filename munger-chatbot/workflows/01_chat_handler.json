@@ -1,0 +1,330 @@
+{
+  "name": "Munger AI - Chat Handler",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": ["message"],
+        "additionalFields": {}
+      },
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [160, 400],
+      "webhookId": "munger-bot-webhook-001",
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_WITH_TELEGRAM_CREDENTIAL_ID",
+          "name": "Telegram - Munger Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract key fields from incoming Telegram message\nconst update = $input.first().json;\n\n// Handle both regular messages and edited messages\nconst msg = update.message || update.edited_message;\n\nif (!msg) {\n  throw new Error('No message found in Telegram update');\n}\n\nconst chatId = msg.chat.id;\nconst text = msg.text || msg.caption || '';\nconst username = msg.from.username || msg.from.first_name || 'friend';\nconst firstName = msg.from.first_name || 'there';\nconst messageId = msg.message_id;\n\n// Create a stable session ID per chat (persists conversation history)\nconst sessionId = `munger_chat_${chatId}`;\n\nreturn [{\n  json: {\n    chatId: chatId.toString(),\n    userMessage: text,\n    username: username,\n    firstName: firstName,\n    messageId: messageId,\n    sessionId: sessionId,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "name": "Format Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [380, 400]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Format Input').item.json.chatId }}",
+        "text": "_Charlie is thinking..._",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "name": "Send Typing Indicator",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [600, 280],
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_WITH_TELEGRAM_CREDENTIAL_ID",
+          "name": "Telegram - Munger Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Format Input').item.json.userMessage }}",
+        "options": {
+          "systemMessage": "={{ $('Format Input').item.json.systemPrompt || 'You are Charlie Munger. See the full system prompt in config/system_prompt.txt - paste its contents here.' }}"
+        }
+      },
+      "id": "d4e5f6a7-b8c9-0123-defa-234567890123",
+      "name": "Munger AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [820, 400]
+    },
+    {
+      "parameters": {
+        "model": "claude-opus-4-6",
+        "options": {
+          "temperature": 0.82,
+          "maxTokensToSample": 4096
+        }
+      },
+      "id": "e5f6a7b8-c9d0-1234-efab-345678901234",
+      "name": "Claude Opus (Munger Voice)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [620, 600],
+      "credentials": {
+        "anthropicApi": {
+          "id": "REPLACE_WITH_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Format Input').item.json.sessionId }}",
+        "contextWindowLength": 20
+      },
+      "id": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+      "name": "Conversation Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [820, 600]
+    },
+    {
+      "parameters": {
+        "name": "search_munger_writings",
+        "description": "Search Charlie Munger's writings, speeches, letters, and documented wisdom. Use this tool FIRST before answering any question about your views, investment philosophy, mental models, or past statements. Returns the most relevant excerpts from your body of work including Poor Charlie's Almanack, Berkshire letters, DJCO annual meeting transcripts, and speeches."
+      },
+      "id": "a7b8c9d0-e1f2-3456-abcd-567890123456",
+      "name": "RAG - Munger Knowledge",
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [1020, 600]
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "qdrantCollection": {
+          "value": "munger_knowledge",
+          "__rl": true,
+          "mode": "list"
+        },
+        "options": {
+          "topK": 6
+        }
+      },
+      "id": "b8c9d0e1-f2a3-4567-bcde-678901234567",
+      "name": "Qdrant Knowledge Base",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.1,
+      "position": [1020, 780],
+      "credentials": {
+        "qdrantApi": {
+          "id": "REPLACE_WITH_QDRANT_CREDENTIAL_ID",
+          "name": "Qdrant"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-large",
+        "options": {}
+      },
+      "id": "c9d0e1f2-a3b4-5678-cdef-789012345678",
+      "name": "OpenAI Embeddings",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.3,
+      "position": [1220, 780],
+      "credentials": {
+        "openAiApi": {
+          "id": "REPLACE_WITH_OPENAI_CREDENTIAL_ID",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "web_search",
+        "description": "Search the web for current news, financial data, company information, or any topic that requires up-to-date information. Use this when asked about recent events, current stock prices, company performance, or to research a topic before forming a view. Returns current search results."
+      },
+      "id": "d0e1f2a3-b4c5-6789-defa-890123456789",
+      "name": "Web Research Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
+      "typeVersion": 1,
+      "position": [1220, 600],
+      "credentials": {
+        "serpApi": {
+          "id": "REPLACE_WITH_SERPAPI_CREDENTIAL_ID",
+          "name": "SerpAPI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "wikipedia_lookup",
+        "description": "Look up factual information about people, companies, historical events, scientific concepts, or any topic requiring encyclopedic background. Use this for verifying facts or getting foundational context on a subject before synthesizing a view."
+      },
+      "id": "e1f2a3b4-c5d6-7890-efab-901234567890",
+      "name": "Wikipedia Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [1420, 600]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Format Input').item.json.chatId }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "parse_mode": "Markdown",
+          "reply_to_message_id": "={{ $('Format Input').item.json.messageId }}"
+        }
+      },
+      "id": "f2a3b4c5-d6e7-8901-fabc-012345678901",
+      "name": "Send Munger Reply",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [1040, 400],
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_WITH_TELEGRAM_CREDENTIAL_ID",
+          "name": "Telegram - Munger Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Format Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Input": {
+      "main": [
+        [
+          {
+            "node": "Send Typing Indicator",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Munger AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Munger AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send Munger Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claude Opus (Munger Voice)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Munger AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Munger AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RAG - Munger Knowledge": {
+      "ai_tool": [
+        [
+          {
+            "node": "Munger AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Knowledge Base": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "RAG - Munger Knowledge",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Embeddings": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Knowledge Base",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Web Research Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Munger AI Agent",
+            "type": "ai_tool",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Wikipedia Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Munger AI Agent",
+            "type": "ai_tool",
+            "index": 2
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "versionId": "munger-chat-v1",
+  "id": "munger-chat-handler-001",
+  "tags": [
+    { "id": "munger", "name": "munger-ai" }
+  ],
+  "notes": "IMPORTANT: Before activating, paste the full contents of config/system_prompt.txt into the 'System Message' parameter of the 'Munger AI Agent' node. Replace all REPLACE_WITH_*_CREDENTIAL_ID placeholders with your actual n8n credential IDs."
+}

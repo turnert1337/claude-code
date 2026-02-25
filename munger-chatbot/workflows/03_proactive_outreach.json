@@ -1,0 +1,324 @@
+{
+  "name": "Munger AI - Proactive Outreach",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7,
+              "triggerAtMinute": 30,
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "bb000001-0000-0000-0000-000000000001",
+      "name": "Morning Schedule (7:30 AM)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [160, 300]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9,13,17,21 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "bb000002-0000-0000-0000-000000000002",
+      "name": "News Scan (Every 4h Weekdays)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [160, 500]
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.finance.yahoo.com/rss/2.0/headline?s=BRK-B,DJCO&region=US&lang=en-US",
+        "options": {}
+      },
+      "id": "bb000003-0000-0000-0000-000000000003",
+      "name": "Berkshire/DJCO News RSS",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [400, 200]
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.feedburner.com/wsj/xml/rss/3_7031.xml",
+        "options": {}
+      },
+      "id": "bb000004-0000-0000-0000-000000000004",
+      "name": "WSJ Markets RSS",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [400, 340]
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.bloomberg.com/markets/news.rss",
+        "options": {}
+      },
+      "id": "bb000005-0000-0000-0000-000000000005",
+      "name": "Bloomberg Markets RSS",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [400, 480]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Aggregate and deduplicate news from all RSS feeds\n// Filter for items published in the last 4 hours\nconst allItems = $input.all();\nconst fourHoursAgo = Date.now() - (4 * 60 * 60 * 1000);\n\nconst keywords = [\n  'berkshire', 'buffett', 'munger', 'daily journal',\n  'market crash', 'bubble', 'recession', 'inflation',\n  'federal reserve', 'interest rates', 'bank failure',\n  'fraud', 'scandal', 'bankruptcy', 'acquisition', 'merger',\n  'valuation', 'earnings', 'investment', 'china', 'ai', 'artificial intelligence'\n];\n\nconst seen = new Set();\nconst filtered = allItems\n  .map(item => item.json)\n  .filter(item => {\n    const pubDate = new Date(item.pubDate || item.isoDate || 0).getTime();\n    const isRecent = pubDate > fourHoursAgo || !item.pubDate;\n    const title = (item.title || '').toLowerCase();\n    const isRelevant = keywords.some(kw => title.includes(kw));\n    const key = item.title;\n    if (seen.has(key)) return false;\n    seen.add(key);\n    return isRecent && isRelevant;\n  })\n  .slice(0, 8) // Take top 8 most relevant items\n  .map(item => ({\n    title: item.title,\n    summary: item.contentSnippet || item.summary || '',\n    link: item.link,\n    published: item.pubDate || item.isoDate\n  }));\n\nif (filtered.length === 0) {\n  return [{ json: { skip: true, reason: 'No significant news found' } }];\n}\n\nreturn [{ json: { articles: filtered, count: filtered.length, skip: false } }];"
+      },
+      "id": "bb000006-0000-0000-0000-000000000006",
+      "name": "Filter & Rank News",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [640, 340]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "check-skip",
+              "leftValue": "={{ $json.skip }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "notTrue"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "bb000007-0000-0000-0000-000000000007",
+      "name": "Significant News?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [860, 340]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build the context string for the AI from collected news headlines\nconst data = $input.first().json;\nconst articles = data.articles || [];\n\nconst headlines = articles\n  .map((a, i) => `${i+1}. ${a.title}\\n   ${a.summary ? a.summary.slice(0, 150) + '...' : '(no summary)'}\\n   Published: ${a.published || 'unknown'}\\n`)\n  .join('\\n');\n\nreturn [{ json: { newsContext: headlines, articleCount: articles.length } }];"
+      },
+      "id": "bb000008-0000-0000-0000-000000000008",
+      "name": "Format News Context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1080, 240]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build the morning wisdom prompt (no news context needed)\nconst days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];\nconst today = days[new Date().getDay()];\nconst month = new Date().toLocaleString('en-US', { month: 'long' });\n\nreturn [{ json: {\n  newsContext: null,\n  dayContext: `It is ${today}, ${month} ${new Date().getDate()}, ${new Date().getFullYear()}.`\n} }];"
+      },
+      "id": "bb000009-0000-0000-0000-000000000009",
+      "name": "Morning Context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [400, 620]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.newsContext ? 'Here are today\\'s significant financial and business headlines:\\n\\n' + $json.newsContext + '\\n\\nAs Charlie Munger, react to the one or two of these that you find most interesting, significant, or worth commenting on. Be direct, insightful, and don\\'t mince words. If something is stupid, say it\\'s stupid. If something confirms a principle you\\'ve long held, say so. Keep it to 3-5 sentences - you\\'re texting someone, not writing an essay. End with any single question you\\'d put to them to get them thinking.' : 'It is morning. As Charlie Munger, send a brief morning message with a single insight, mental model reminder, or investment principle worth reflecting on today. Draw on your knowledge base of writings and talks. Be conversational - you are texting a friend who respects your wisdom. Keep it brief: 2-4 sentences plus optionally a thought-provoking question. Do NOT use generic phrases like \\'Good morning\\' - just get to the insight.' }}",
+        "options": {
+          "systemMessage": "PASTE THE FULL CONTENTS OF config/system_prompt.txt HERE.\n\nAdditional instruction for outreach messages: You are initiating contact, not responding to a question. Be concise, punchy, and worth interrupting someone's day for. You are texting, not giving a speech. Maximum 4-5 sentences unless the topic genuinely demands more."
+        }
+      },
+      "id": "bb000010-0000-0000-0000-000000000010",
+      "name": "Munger Outreach Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [1300, 440]
+    },
+    {
+      "parameters": {
+        "model": "claude-opus-4-6",
+        "options": {
+          "temperature": 0.88,
+          "maxTokensToSample": 1024
+        }
+      },
+      "id": "bb000011-0000-0000-0000-000000000011",
+      "name": "Claude (Outreach)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [1100, 620],
+      "credentials": {
+        "anthropicApi": {
+          "id": "REPLACE_WITH_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "search_munger_writings",
+        "description": "Search Charlie Munger's writings and speeches to find relevant quotes and ideas that apply to the current topic or news. Use this to make sure outreach messages are grounded in actual Munger thinking."
+      },
+      "id": "bb000012-0000-0000-0000-000000000012",
+      "name": "RAG Tool (Outreach)",
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [1300, 620]
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "qdrantCollection": {
+          "value": "munger_knowledge",
+          "__rl": true,
+          "mode": "list"
+        },
+        "options": {
+          "topK": 4
+        }
+      },
+      "id": "bb000013-0000-0000-0000-000000000013",
+      "name": "Qdrant (Outreach)",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.1,
+      "position": [1300, 780],
+      "credentials": {
+        "qdrantApi": {
+          "id": "REPLACE_WITH_QDRANT_CREDENTIAL_ID",
+          "name": "Qdrant"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-large",
+        "options": {}
+      },
+      "id": "bb000014-0000-0000-0000-000000000014",
+      "name": "Embeddings (Outreach)",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.3,
+      "position": [1500, 780],
+      "credentials": {
+        "openAiApi": {
+          "id": "REPLACE_WITH_OPENAI_CREDENTIAL_ID",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "REPLACE_WITH_YOUR_TELEGRAM_CHAT_ID",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "bb000015-0000-0000-0000-000000000015",
+      "name": "Send to User",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [1540, 440],
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_WITH_TELEGRAM_CREDENTIAL_ID",
+          "name": "Telegram - Munger Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Morning Schedule (7:30 AM)": {
+      "main": [
+        [{ "node": "Morning Context", "type": "main", "index": 0 }]
+      ]
+    },
+    "News Scan (Every 4h Weekdays)": {
+      "main": [
+        [{ "node": "Berkshire/DJCO News RSS", "type": "main", "index": 0 },
+         { "node": "WSJ Markets RSS", "type": "main", "index": 0 },
+         { "node": "Bloomberg Markets RSS", "type": "main", "index": 0 }]
+      ]
+    },
+    "Berkshire/DJCO News RSS": {
+      "main": [
+        [{ "node": "Filter & Rank News", "type": "main", "index": 0 }]
+      ]
+    },
+    "WSJ Markets RSS": {
+      "main": [
+        [{ "node": "Filter & Rank News", "type": "main", "index": 0 }]
+      ]
+    },
+    "Bloomberg Markets RSS": {
+      "main": [
+        [{ "node": "Filter & Rank News", "type": "main", "index": 0 }]
+      ]
+    },
+    "Filter & Rank News": {
+      "main": [
+        [{ "node": "Significant News?", "type": "main", "index": 0 }]
+      ]
+    },
+    "Significant News?": {
+      "main": [
+        [{ "node": "Format News Context", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "Format News Context": {
+      "main": [
+        [{ "node": "Munger Outreach Agent", "type": "main", "index": 0 }]
+      ]
+    },
+    "Morning Context": {
+      "main": [
+        [{ "node": "Munger Outreach Agent", "type": "main", "index": 0 }]
+      ]
+    },
+    "Munger Outreach Agent": {
+      "main": [
+        [{ "node": "Send to User", "type": "main", "index": 0 }]
+      ]
+    },
+    "Claude (Outreach)": {
+      "ai_languageModel": [
+        [{ "node": "Munger Outreach Agent", "type": "ai_languageModel", "index": 0 }]
+      ]
+    },
+    "RAG Tool (Outreach)": {
+      "ai_tool": [
+        [{ "node": "Munger Outreach Agent", "type": "ai_tool", "index": 0 }]
+      ]
+    },
+    "Qdrant (Outreach)": {
+      "ai_vectorStore": [
+        [{ "node": "RAG Tool (Outreach)", "type": "ai_vectorStore", "index": 0 }]
+      ]
+    },
+    "Embeddings (Outreach)": {
+      "ai_embedding": [
+        [{ "node": "Qdrant (Outreach)", "type": "ai_embedding", "index": 0 }]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "versionId": "munger-outreach-v1",
+  "id": "munger-proactive-outreach-001",
+  "tags": [
+    { "id": "munger", "name": "munger-ai" }
+  ],
+  "notes": "Set REPLACE_WITH_YOUR_TELEGRAM_CHAT_ID to your personal Telegram chat ID (get it by messaging @userinfobot on Telegram). Two triggers: 1) Morning wisdom at 7:30 AM daily, 2) News scan every 4 hours on weekdays. Only fires on news scan if significant keywords are found. Replace RSS URLs with feeds that work for you - WSJ and Bloomberg may require subscriptions."
+}

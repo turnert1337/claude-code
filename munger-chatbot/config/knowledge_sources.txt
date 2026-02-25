@@ -1,0 +1,160 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MUNGER AI KNOWLEDGE BASE — SOURCE DOCUMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+These are the documents you should ingest into the Qdrant vector
+database (collection: "munger_knowledge") using workflow 02.
+
+The prepare_documents.py script will download the freely available
+sources automatically. Documents behind paywalls require manual
+acquisition.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TIER 1: HIGHEST PRIORITY — Core Munger Philosophy (Free/Easy)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[SPEECH] "The Psychology of Human Misjudgment" (1995)
+  - Delivered at Harvard University
+  - The definitive Munger text on cognitive biases and mental models
+  - Full text freely available at many educational sites
+  - Search: "Munger psychology human misjudgment full text"
+  - Also reproduced in full in Poor Charlie's Almanack
+
+[SPEECH] "A Lesson on Elementary Worldly Wisdom" (1994)
+  - USC Marshall School of Business
+  - Introduces the "latticework of mental models" concept
+  - Full text: search "Munger elementary worldly wisdom USC 1994 transcript"
+
+[SPEECH] "Practical Thought About Practical Thought?" (1996)
+  - USC Law School Commencement Address
+  - Demonstrates his thinking approach through a Coca-Cola thought experiment
+  - Full text widely available online
+
+[SPEECH] "The Need for More Multidisciplinary Thinking" (1998)
+  - Harvard Law School
+  - On the failures of specialization in education and practice
+  - Search "Munger Harvard law 1998 multidisciplinary"
+
+[SPEECH] "Academic Economics: Strengths and Faults After Considering
+           Interdisciplinary Needs" (2003)
+  - Santa Barbara City College Economics Department lecture
+  - Munger's critique of academic economics
+  - Full text widely reproduced
+
+[SPEECH] "Breakfast Meeting of the Philanthropy Round Table" (various)
+  - On giving, civic virtue, and the duties of the fortunate
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TIER 2: HIGH PRIORITY — Annual Letters & Meetings
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[LETTERS] Wesco Financial Annual Reports — Munger's Chairman Letters (1977-2010)
+  - Available at: https://www.berkshirehathaway.com/wesco/annual.html
+  - These are Munger's own writing, equivalent to Buffett's BRK letters
+  - Cover investing philosophy, business analysis, financial markets
+  - STRONGLY RECOMMENDED — this is Munger at his most explicit
+
+[TRANSCRIPTS] Daily Journal Corporation Annual Meetings (2014-2023)
+  - Q&A sessions with Munger acting as chairman
+  - Available via: http://www.gurufocus.com (search "DJCO annual meeting")
+  - Also on ValueInvestorClub, SeekingAlpha, and YouTube transcripts
+  - Topics: China, AI, banking, investing, mental models, life philosophy
+  - The 2021 meeting transcript is particularly rich
+
+[TRANSCRIPTS] Berkshire Hathaway Annual Meetings — Munger Portions (1994-2023)
+  - Full transcripts at: https://www.morningstar.com (search Berkshire annual meeting)
+  - Focus on Munger's specific responses (he spoke ~20-30% of the time)
+  - Key years: 1999 (internet bubble), 2008 (crisis), 2015-2020 (recent wisdom)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TIER 3: VALUABLE — Books & Long-Form Interviews
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[BOOK] Poor Charlie's Almanack (Peter Kaufman, ed., 2005 / expanded 2023)
+  - The definitive Munger anthology
+  - Contains: biographical essays, 11 talks, Munger's reading list, artwork
+  - NOT free but widely available. The 2023 expanded edition added DJCO material.
+  - This is the single most important document to ingest. Buy it.
+  - Key sections: "The Munger Approach to Life, Learning, and Decision Making"
+    and all 11 talks (many overlap with Tier 1 speeches above)
+
+[BOOK] "Charlie Munger: The Complete Investor" (Tren Griffin, 2015)
+  - A synthesis of Munger's principles by a longtime Munger student
+  - Not Munger's own words, but a reliable secondary source
+  - Good for structured topic coverage
+
+[INTERVIEW] Charlie Munger: A Conversation with the Vice Chairman of
+             Berkshire Hathaway (various dates, Stripe Press 2023)
+  - Available at: https://press.stripe.com/poor-charlies-almanack
+  - Selected as part of the free digital version
+
+[INTERVIEW] Acquired Podcast — Charlie Munger (November 2023)
+  - His last major interview, conducted months before his death
+  - Transcript available on Acquired.fm
+  - Covers: China, AI, banking, Berkshire succession, his life
+  - URL: https://www.acquired.fm/episodes/charlie-munger
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TIER 4: SUPPLEMENTARY — Reported Quotes & Articles
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[COMPILATION] The Munger Quote Archive
+  - Various sites compile Munger quotes with source attribution
+  - Best: https://fs.blog/munger/ (Farnam Street extensive coverage)
+  - Also: https://www.gurufocus.com/term/quote/NAS:DJCO/munger-quotes
+  - Note: Not all attributed quotes have verified sources — be selective
+
+[ARTICLE] "Munger on China" — various WSJ/FT articles (2019-2023)
+  - His public statements on China investments (BYD, Alibaba)
+  - His reasoning about geopolitical risk vs. opportunity
+
+[ARTICLE] Post-mortem tributes and retrospectives (November-December 2023)
+  - Warren Buffett's tribute in 2024 Berkshire annual letter
+  - Acquired episode tribute
+  - These contain quotes and stories not found elsewhere
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DOCUMENT PREPARATION NOTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Format: Plain text (.txt) works best for ingestion. If you have PDFs,
+use pdfplumber or pdf2text to extract (see prepare_documents.py).
+
+File naming convention:
+  munger_[year]_[short_title].txt
+  e.g. munger_1995_psychology_misjudgment.txt
+       munger_2003_academic_economics.txt
+       munger_wesco_letters_1977_2010.txt
+
+Chunk sizes in the ingestion workflow:
+  - 1200 characters per chunk, 200 overlap
+  - Each speech is typically 15,000-80,000 characters
+  - Wesco letters combined: ~300,000 characters
+  - Total estimated corpus: 800,000 - 1,500,000 characters
+  - At 1200 chars/chunk: approximately 700-1250 chunks
+  - Qdrant free tier handles this easily
+
+Metadata tags used in ingestion (for potential filtered retrieval):
+  - category: mental_models | investing_philosophy | investing_current |
+               wisdom_life | economics | biography | misc
+  - source: speech | annual_report | annual_meeting | book | interview | manual
+  - year: [year or year range as string]
+  - title: [document title]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+QUICK START — Minimum Viable Knowledge Base (4 documents)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+If you want to get started quickly before acquiring everything:
+
+1. "Psychology of Human Misjudgment" speech (free, easily found)
+2. "Elementary Worldly Wisdom" speech (free, easily found)
+3. Wesco Financial letters 1977-2010 (free at berkshirehathaway.com)
+4. DJCO Annual Meeting 2021 transcript (free via acquired.fm or seekingalpha)
+
+These 4 sources alone give the bot a very solid foundation.
+The full corpus makes it significantly richer.
