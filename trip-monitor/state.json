@@ -286,6 +286,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 5,
+      "ts_utc": "2026-09-04T04:06:00Z",
+      "verdict": "REASSESS",
+      "verdict_reason": "Unchanged. Still no watch or warning for Oahu, still no AA waiver. Forecasters say it is too soon to call island impacts.",
+      "prev_verdict": "REASSESS",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 4-5 - 140-160 mph",
+          "detail": "Sources conflict. Lowell peaked at Cat 5 / 160 mph; the latest advisory I can reach reads Cat 4 / 140 mph, 465 mi SW of Hilo. Likely weakening off peak, but I cannot confirm direction without raw NHC text.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "Third brief running. No coastal watches or warnings for any land area. Wind advisory for Oahu through 6am Friday, gusts to 50. Advisories are not warnings.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "Nothing posted for American. Note Hawaiian and Alaska issued waivers during a storm last month, so the mechanism exists and AA has simply not triggered it.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Uncertain - Kauai likeliest",
+          "detail": "CPHC explicitly not confident on track. Kauai is the likelier target; Oahu is called less possible but not impossible. That last phrase is why this stays REASSESS.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Hold. Nothing has fired that would let Chase pay, so cancelling still costs the full $4,800. Your 8:45am flight departs into no watch, no warning, and a normally operating HNL.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
