@@ -558,6 +558,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 9,
+      "ts_utc": "2026-09-04T08:07:00Z",
+      "verdict": "REASSESS",
+      "verdict_reason": "No escalation. Both Oahu advisories expire 6am Friday, so near-term conditions improve, not worsen. The concern remains early next week.",
+      "prev_verdict": "REASSESS",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 4 - 140 mph",
+          "detail": "Steady. 450 mi SSW of Hilo, 605 mi SSE of Lihue, moving west at 10 mph and slowing. Expected to hold major hurricane intensity for several days over warm water and low shear.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "Both advisories expire 6am",
+          "detail": "Seventh brief with no coastal watch or warning for the main Hawaiian Islands. The Oahu wind advisory and the high surf advisory both END 6am Friday. Near-term conditions on Oahu are set to improve.",
+          "trend": "better",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "Still nothing from American, and no reported HNL disruption. One check of the app before you leave covers you.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Turn NW/N this weekend",
+          "detail": "Unchanged. Gradual slowdown, then a turn northwest and north over the weekend. Storm surge, damaging wind and rain possible for parts of the state early next week. Officials are telling residents to review plans over the holiday weekend.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Hold. Nothing qualifying has fired. Note the timing: you land Friday morning as the current advisories lapse, roughly three days before the forecast impact window.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
