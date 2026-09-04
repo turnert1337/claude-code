@@ -1,0 +1,155 @@
+{
+  "trip": {
+    "destination": "Oahu, HI (HNL)",
+    "airline": "American Airlines",
+    "departure_local": "8:45am",
+    "departure_date": "UNCONFIRMED \u2014 user to confirm 2026-09-04 vs 2026-09-05",
+    "booked": "2026-04 (pre-dates Lowell \u2014 key Chase fact)",
+    "nonrefundable": 4800,
+    "nonrefundable_item": "hotel",
+    "card": "Chase Sapphire Reserve",
+    "checked_in": false
+  },
+  "recipients": [
+    "turnerjtomlinson@gmail.com"
+  ],
+  "gmail_thread_id": "1a06a24b6e422c2d",
+  "readings": [
+    {
+      "n": 1,
+      "ts_utc": "2026-09-04T14:00:00Z",
+      "verdict": "GO",
+      "verdict_reason": "No watch or warning for Oahu. AA operating normally. Advisory-level conditions only.",
+      "prev_verdict": null,
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 4 \u00b7 140 mph",
+          "detail": "455 mi SSE of Hilo, moving W at 10 mph. Pressure 932 mb.",
+          "trend": "flat",
+          "trend_note": "baseline",
+          "flag": "watch"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "Advisory only",
+          "detail": "Wind advisory (gusts to 50 mph), high surf advisory S/SE shores. NWS says no TS/hurricane watch expected.",
+          "trend": "flat",
+          "trend_note": "baseline",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "No Hawaii weather waiver posted. Cancel now and you eat the ticket value as credit at best.",
+          "trend": "flat",
+          "trend_note": "baseline",
+          "flag": "ok"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Tue \u00b7 W of Kauai",
+          "detail": "Sharp right turn N Sat-Sun. Passes the far end of the chain from Oahu, but the turn is the uncertainty.",
+          "trend": "worse",
+          "trend_note": "track edged closer vs 9/2",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Do not voluntarily cancel. Chase needs a qualifying disruption (carrier cancels, watch/warning, hotel closes), not a forecast. Booking in April is your strongest fact \u2014 keep it.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "ts_utc": "2026-09-05T03:00:00Z",
+      "verdict": "GO",
+      "verdict_reason": "No coastal watches or warnings in effect. Nothing has moved since the last brief.",
+      "prev_verdict": "GO",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 4 - 140 mph",
+          "detail": "465 mi SW of Hilo, 585 mi S of Lihue. Moving W at 10 mph, slowing.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "NHC: no coastal watches or warnings in effect. Surf advisories only, swells build early next week.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "Still no Hawaii weather waiver. Cancelling remains on you.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Tue - W of Kauai",
+          "detail": "Turn NW then N this weekend. Unchanged since last brief. Major hurricane status expected to hold.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Nothing has changed the calculus. No qualifying disruption exists, so cancelling still costs you the full $4,800. Hold.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
+    }
+  ]
+}
