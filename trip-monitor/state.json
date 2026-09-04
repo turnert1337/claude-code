@@ -218,6 +218,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 4,
+      "ts_utc": "2026-09-04T03:05:00Z",
+      "verdict": "REASSESS",
+      "verdict_reason": "Lowell is now Cat 5 and the track shifted north toward the islands. Still no watch or warning for Oahu. Tomorrow's flight looks fine; the back half of the trip is the question.",
+      "prev_verdict": "GO",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 5 - 160 mph",
+          "detail": "Was Cat 4 / 140 mph at last brief. Went from 70 mph tropical storm to 160 mph in about 30 hours, among the fastest intensifications this basin has recorded. 445 mi S of Hilo.",
+          "trend": "worse",
+          "trend_note": "no change",
+          "flag": "bad"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "Unchanged and this is the one that matters. No coastal watches or warnings for any land area. Tropical storm warning covers offshore waters only.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "Still nothing posted. But a Cat 5 bending toward the islands makes an AA waiver materially more likely in the next 24 to 48 hours.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Sun-Tue - near Kauai",
+          "detail": "CPHC expects a sharp turn north or north-northeast by Sunday, passing dangerously close to the WESTERN islands, possibly still at major hurricane strength. Oahu sits east of Kauai.",
+          "trend": "worse",
+          "trend_note": "no change",
+          "flag": "bad"
+        }
+      ],
+      "money_note": "Still do not cancel, and the reason just got stronger. A Cat 5 turning toward Hawaii raises the odds that AA posts a waiver or a Named Storm Warning lands within 50 miles of your hotel. Those are exactly the events that unlock Chase. Waiting is no longer just protecting the $4,800, it is waiting for coverage that is becoming more likely.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
