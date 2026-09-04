@@ -762,6 +762,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 12,
+      "ts_utc": "2026-09-04T10:07:00Z",
+      "verdict": "GO",
+      "verdict_reason": "Still go. No watch or warning, no AA waiver. New forecast detail: even at closest approach Monday night, Lowell is projected under 200 mi southwest of Lihue, which keeps Oahu roughly 300 mi from the center.",
+      "prev_verdict": "GO",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 3-4 - direction unclear",
+          "detail": "Latest advisory read Cat 3 / 125 mph. But some guidance says conditions stay favorable to maintain or even regain strength over 2-3 days. Treat the weakening trend as real but not banked.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "Tenth brief running. No coastal watch or warning for any Hawaiian island. The Oahu wind advisory expires 6am Friday HST, before you land.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "No Lowell waiver from American. Check your specific flight in the AA app before you leave the house.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Mon night, 200mi SW of Lihue",
+          "detail": "Best number yet. Saturday it turns sharply north. By Monday night it is forecast as a Cat 3 near 120 mph, centered less than 200 mi southwest of Lihue. Honolulu sits about 100 mi east of Lihue, so Oahu is roughly 300 mi from the center at closest pass.",
+          "trend": "better",
+          "trend_note": "no change",
+          "flag": "ok"
+        }
+      ],
+      "money_note": "Go. Nothing qualifying has fired, so cancelling still costs the full $4,800. The Monday-night geometry is the reassuring part: roughly 300 mi of separation from Oahu at the storm's closest projected approach.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
