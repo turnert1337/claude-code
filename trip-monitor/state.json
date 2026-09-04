@@ -694,6 +694,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 11,
+      "ts_utc": "2026-09-04T09:20:00Z",
+      "verdict": "GO",
+      "verdict_reason": "Fly. Latest advisory has Lowell at Cat 3 and 555 mi from Honolulu, no watch or warning anywhere in the islands. One new wrinkle: HNL is showing heavy delays tonight in the advisory winds.",
+      "prev_verdict": "GO",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 3 - 125 mph",
+          "detail": "Latest advisory (11pm HST): Cat 3, 125 mph, 555 mi SSW of Honolulu. Some outlets still republish the older Cat 4 / 140 figure, so expect that mismatch. Trend across three readings is clearly down: 160, 140, 125.",
+          "trend": "better",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "Ninth brief running. No coastal watch or warning anywhere in the Hawaiian Islands. Oahu wind advisory (gusts to 55) and high surf advisory both expire 6am Friday HST.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None - but watch HNL",
+          "detail": "No Lowell waiver from American. NEW: HNL is reporting heavy delays tonight with 19kt easterly winds and 2 mi visibility, consistent with the wind advisory that expires 6am. Check your flight status before leaving.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Near/W of Kauai Mon-Tue",
+          "detail": "Unchanged. Ridge weakens this weekend, Lowell turns sharply north or north-northeast, passing near or just west of Kauai County late Monday into early Tuesday. Kauai greatest threat, Oahu elevated, Maui and Big Island low.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Fly, and do not cancel anything. No qualifying event has fired, so cancelling still burns the full $4,800 with no Chase claim. Your leverage improves, not worsens, by being on the island if Lowell does turn: Trip Interruption and Trip Delay both become live, and an AA waiver during the Sunday-to-Tuesday window would cover a return change.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
