@@ -490,6 +490,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 8,
+      "ts_utc": "2026-09-04T07:07:00Z",
+      "verdict": "REASSESS",
+      "verdict_reason": "No new escalation. Useful new detail: forecasters put the highest threat to regional flights Sunday through Tuesday, which is your return window, not your arrival.",
+      "prev_verdict": "REASSESS",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 4 - 140-155 mph",
+          "detail": "Holding Cat 4 after briefly touching Cat 5. Reported winds range 140 to 155 mph across sources; the Cat 5 threshold is 157. About 455 mi SSE of Hilo, moving west at 10 mph.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "Sixth brief running. No coastal watch or warning for any land area. Oahu forecast is east winds 20 to 30 mph, gusts to 50. That is an advisory, not a warning, and it does not unlock Chase.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "Nothing from American. Worth one look at the AA app before you leave for the airport.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Flight risk Sun-Tue",
+          "detail": "New and directly relevant: highest threat to regional flights runs Sunday morning through Monday and Tuesday. Your Friday arrival sits outside that window. Your return does not.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Hold. No qualifying disruption exists, so cancelling still costs the full $4,800. If disruption comes, it lands Sunday through Tuesday, and by then you would be there with Trip Interruption and Trip Delay in play rather than Trip Cancellation.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
