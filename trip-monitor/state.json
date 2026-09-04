@@ -354,6 +354,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 6,
+      "ts_utc": "2026-09-04T05:07:00Z",
+      "verdict": "REASSESS",
+      "verdict_reason": "Weakened to Cat 4 off its Cat 5 peak. Still no watch or warning for Oahu, still no AA waiver. Oahu now formally rated an elevated threat, below Kauai.",
+      "prev_verdict": "REASSESS",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 4 - weakening",
+          "detail": "Confirmed: CPHC downgraded Lowell from Cat 5 to Cat 4. About 400 mi S of the Big Island, moving west. Still expected to stay a major hurricane as it passes the islands.",
+          "trend": "better",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "Fourth brief running. No coastal watch or warning for any land area. Wind advisory for Oahu expires 6am Friday, gusts to 50. An advisory is not a warning and does not unlock Chase.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "Still nothing from American. This remains your cheapest exit if it appears.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Turn starts Saturday",
+          "detail": "Threat now tiered west to east: Kauai greatest, OAHU ELEVATED, Maui and Big Island low. Turn north begins Saturday, impacts early next week. Officials warn the track could still shift east, toward Kauai.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Hold. No qualifying disruption, so cancelling still costs the full $4,800. Your 8:45am flight leaves roughly a day and a half before the turn even begins.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
