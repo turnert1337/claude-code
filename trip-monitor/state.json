@@ -150,6 +150,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 3,
+      "ts_utc": "2026-09-04T02:25:00Z",
+      "verdict": "GO",
+      "verdict_reason": "No coastal watches or warnings for Oahu. Out-of-cycle send to confirm both addresses receive.",
+      "prev_verdict": "GO",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 4 - 140 mph",
+          "detail": "465 mi SW of Hilo, 585 mi S of Lihue. Moving W at 10 mph, slowing.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "NHC: no coastal watches or warnings in effect. Surf advisories only, swells build early next week.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "Still no Hawaii weather waiver. Cancelling remains on you.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Tue - W of Kauai",
+          "detail": "Turn NW then N this weekend. Unchanged since last brief. Major hurricane status expected to hold.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Unchanged. No qualifying disruption exists, so cancelling still costs the full $4,800. Next NHC advisory lands about 10pm Central, which is the first one that can actually move this.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
