@@ -422,6 +422,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 7,
+      "ts_utc": "2026-09-04T06:07:00Z",
+      "verdict": "REASSESS",
+      "verdict_reason": "Nothing new. No watch or warning for Oahu, no AA waiver, Hawaii airports open and operating on schedule. Closest approach now pinned to late Monday into Tuesday.",
+      "prev_verdict": "REASSESS",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 4 - 140 mph",
+          "detail": "Holding at Cat 4, 585 mi S of Lihue. Expected to stay at or near major hurricane strength as it nears the islands.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "Fifth brief running. No coastal watch or warning for any land area. Wind advisory for parts of Oahu runs through Friday morning, gusts to 55. State reports airports open, flights on schedule.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "Still nothing from American. Check the AA app before you leave for the airport; a waiver is your cheapest exit and it can post at any hour.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Late Mon into Tue",
+          "detail": "Sharper now: track brings the center near or just west of Kauai County late Monday into early Tuesday. Threat tiers west to east, Kauai greatest, OAHU ELEVATED, Maui and Big Island low.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Hold. Nothing has fired that lets Chase pay. Your 8:45am departure is roughly three days ahead of closest approach, and it is aimed at Kauai, not Oahu.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
