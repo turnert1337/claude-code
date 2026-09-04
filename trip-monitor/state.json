@@ -966,6 +966,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 15,
+      "ts_utc": "2026-09-04T13:07:00Z",
+      "verdict": "GO",
+      "verdict_reason": "Final pre-departure brief. No watch or warning anywhere in the islands, airports open, flights on normal schedules. Go.",
+      "prev_verdict": "GO",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Major hurricane, south",
+          "detail": "Still south of the islands. Wind reports range 125 to 155 mph across sources. Turn north and northeast comes this weekend.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "Thirteenth and final pre-flight brief. No coastal watch or warning for the main Hawaiian Islands at any point this week. Wind and high surf advisories lapse 6am HST.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "Airports open, normal ops",
+          "detail": "Hawaii airports open, flights on normal schedules. Waiver status still unconfirmed from here, so check your reservation in the app.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Closest approach late Monday",
+          "detail": "Confirmed timing: closest approach expected late Monday. Highest threat to regional flights Sunday morning through Tuesday.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Go. Fifteen briefs, zero qualifying events. Your $4,800 is intact and your April booking date still protects you if next week turns. The decision now shifts from whether to fly to how to handle the return.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
