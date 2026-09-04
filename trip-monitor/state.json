@@ -898,6 +898,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 14,
+      "ts_utc": "2026-09-04T12:08:00Z",
+      "verdict": "GO",
+      "verdict_reason": "Go. Still no watch or warning, airports open, flights on normal schedules. ONE ACTION: sources disagree on whether American has posted a Lowell waiver. Check your reservation in the AA app before you leave.",
+      "prev_verdict": "GO",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 3-4 - well south",
+          "detail": "Still well south of the islands and moving west. Advisory figures range Cat 3 / 125 to Cat 4 / 155 across sources depending on vintage. Not decision-relevant today; the separation is.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "Twelfth brief running. No coastal watch or warning for any Hawaiian island. Tropical storm warning covers offshore waters only, plus small craft, high surf and wind advisories.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "UNCONFIRMED - check app",
+          "detail": "Sources conflict. One report says an American waiver covers HNL, OGG, KOA and LIH; another finds only the August Tropical Storm Lala waiver, which expired. The September dates being quoted do not line up with Lowell. I cannot confirm a live waiver. Your AA app is the only authority. 30 seconds, and if one exists it is your free change.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Flight risk Sun-Tue",
+          "detail": "Airports across Hawaii open, flights on normal schedules now. Highest threat to regional flights is Sunday morning through Monday and Tuesday. That is your return, not your arrival.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Go, and check the AA app on the way. If a waiver is live it costs nothing to know, and it is the one thing that could let you shift dates for free rather than eating $4,800. If there is no waiver, nothing changes and you board.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
