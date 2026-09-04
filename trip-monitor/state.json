@@ -830,6 +830,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 13,
+      "ts_utc": "2026-09-04T11:08:00Z",
+      "verdict": "GO",
+      "verdict_reason": "Go. Nothing changed overnight. What you land into today: gusty trades, scattered windward showers, big south-shore surf. Not dangerous, just not a postcard day one.",
+      "prev_verdict": "GO",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 3-4 - well south",
+          "detail": "Reporting still lags between Cat 3 / 125 (latest advisory) and Cat 4 / 140 (older republished figures). Either way it stays well south of the islands through Friday and moves away from your arrival, not toward it.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "Eleventh brief running. No coastal watch or warning for any Hawaiian island at any point this whole week. The Oahu wind advisory lapses 6am HST.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "No Lowell waiver from American. Pull up your specific flight in the app on the way to the airport, that is the only check left that matters.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Very close to Kauai Mon/Tue",
+          "detail": "Turn north comes this weekend. Forecast brings Lowell very close to Kauai Monday or Tuesday. Oahu stays the secondary threat, several hundred miles east of the center.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Go. Eleven briefs, zero qualifying events, so cancelling would still burn the full $4,800 for nothing. Save the hotel paperwork on arrival; that is the asset that matters if next week turns.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
