@@ -626,6 +626,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 10,
+      "ts_utc": "2026-09-04T09:06:00Z",
+      "verdict": "GO",
+      "verdict_reason": "Second straight downgrade, now Cat 3. Sits 555 mi from Honolulu with a 140 mi tropical-storm wind field. No watch or warning, airports normal. Fly. The early-week window stays under watch.",
+      "prev_verdict": "REASSESS",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 3 - 125 mph",
+          "detail": "11pm HST advisory. Third reading in a row weaker: 160 mph peak, then 140, now 125. Hurricane-force winds reach 45 mi from center, tropical-storm-force 140 mi. Center is 555 mi SSW of Honolulu, so Oahu sits roughly four times outside the TS wind field.",
+          "trend": "better",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "No watch/warning",
+          "detail": "Eighth brief running. No coastal watches or warnings in effect. The Oahu wind and high surf advisories expire 6am Friday.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None active",
+          "detail": "Nothing from American and no HNL disruption reported. Give the app one look before you leave.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "ok"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Still turns N this weekend",
+          "detail": "The one thing that has not improved. Lowell is still forecast to turn north this weekend and hold major hurricane strength, with possible impacts to parts of the state early next week. Kauai remains the likeliest target.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Get on the plane. Cancelling now still costs the full $4,800 with no Chase claim, and the safety case for flying just got stronger, not weaker. Keep watching the return; that is where the exposure actually lives.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
