@@ -1034,6 +1034,74 @@
           "url": "https://zoom.earth/storms/lowell-2026/"
         }
       ]
+    },
+    {
+      "n": 16,
+      "ts_utc": "2026-09-05T03:05:00Z",
+      "verdict": "REASSESS",
+      "verdict_reason": "You are on Oahu, so this is a new question: not whether to fly, but the return. Lowell re-intensified to Cat 4 and hurricane watches are likely for Kauai County tomorrow.",
+      "prev_verdict": "GO",
+      "datapoints": [
+        {
+          "key": "storm",
+          "label": "Lowell",
+          "value": "Cat 4 - RE-INTENSIFIED",
+          "detail": "Back up to 140-150 mph after dropping to Cat 3. The weakening trend I flagged Friday morning did not hold, exactly the risk I warned was not banked. Moving west at 8 mph, northward turn Saturday or Sunday.",
+          "trend": "worse",
+          "trend_note": "no change",
+          "flag": "bad"
+        },
+        {
+          "key": "alerts",
+          "label": "Oahu alerts",
+          "value": "Kauai watch likely Sat",
+          "detail": "Still no watch or warning in effect right now. But officials say hurricane watches will likely be issued for portions of Kauai County on Saturday. That would be the first formal alert of this whole event.",
+          "trend": "worse",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "aa",
+          "label": "AA waiver",
+          "value": "None - flight risk Sun-Tue",
+          "detail": "No confirmed American waiver. Highest threat to regional flights runs Sunday morning through Monday and Tuesday. If your return falls in there, a waiver becomes your best tool.",
+          "trend": "flat",
+          "trend_note": "no change",
+          "flag": "watch"
+        },
+        {
+          "key": "approach",
+          "label": "Closest pass",
+          "value": "Oahu impacts Mon PM-Tue AM",
+          "detail": "Closest pass late Monday night into early Tuesday, near Kauai and Niihau. For Oahu expect strong gusts and heavy rain on southern shores Monday evening into Tuesday morning, plus dangerous surf on south and west shores. Rainfall 3-6 inches, locally over 10 on Kauai.",
+          "trend": "worse",
+          "trend_note": "no change",
+          "flag": "watch"
+        }
+      ],
+      "money_note": "Different game now. Trip Cancellation is gone; you are there. What is live is Trip Interruption, Trip Delay ($500 per traveler after 6 hours or an overnight), and an AA waiver if one posts. A Kauai watch does NOT unlock Chase for your Oahu hotel; that needs a Named Storm Warning within 50 miles of your lodging or airport.",
+      "sources": [
+        {
+          "label": "NHC Advisory",
+          "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/020845.shtml"
+        },
+        {
+          "label": "NWS Honolulu",
+          "url": "https://www.weather.gov/hfo/watchwarn"
+        },
+        {
+          "label": "AA Alerts",
+          "url": "https://www.aa.com/i18n/travel-info/travel-alerts.jsp"
+        },
+        {
+          "label": "HNL Live",
+          "url": "https://www.flightaware.com/live/airport/PHNL"
+        },
+        {
+          "label": "Zoom Earth",
+          "url": "https://zoom.earth/storms/lowell-2026/"
+        }
+      ]
     }
   ]
 }
